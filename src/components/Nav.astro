@@ -77,11 +77,12 @@ const links = [
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const currentPath = window.location.pathname;
+    const normalize = (path) => path.replace(/\/+$/, "") || "/";
+    const currentPath = normalize(window.location.pathname);
     const links = document.querySelectorAll("nav a:not(.logo)");
 
     links.forEach((link) => {
-      if (link.getAttribute("href") === currentPath) {
+      if (normalize(link.getAttribute("href")) === currentPath) {
         link.classList.add("text-primary");
 
         const span = link.querySelector("span");
