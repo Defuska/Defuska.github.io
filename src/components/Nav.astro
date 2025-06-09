@@ -1,6 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
-const currentPath = Astro.url.pathname;
+
 const links = [
   { href: "/", label: "Strona główna" },
   { href: "/vip", label: "Odbierz VIP-a" },
@@ -10,7 +10,7 @@ const links = [
 ];
 ---
 
-<nav class="navbar bg-base-100 shadow-sm px-10 mb-6">
+<nav class="navbar bg-base-200 shadow-sm px-10 mb-6">
   <div class="navbar-start">
     <div class="dropdown lg:hidden">
       <label tabindex="0" class="btn btn-ghost btn-circle flex justify-start">
@@ -37,25 +37,17 @@ const links = [
             <li>
               <a
                 href={link.href}
-                class={
-                  `relative group px-3 py-2 transition-colors ` +
-                  `${currentPath === link.href ? "text-primary" : "text-base-content"}`
-                }
+                class="relative group px-3 py-2 transition-colors text-base-content"
               >
                 {link.label}
-                <span
-                  class={`absolute bottom-0 block h-[2px] bg-current
-                    transition-[width,left] duration-300 ease-in-out
-                    ${currentPath === link.href ? "w-full left-0" : "w-0 left-1/2"}
-                    ${currentPath !== link.href ? "group-hover:w-full group-hover:left-0" : ""}`}
-                />
+                <span class="absolute bottom-0 block h-[2px] bg-current w-0 left-1/2 transition-[width,left] duration-300 ease-in-out group-hover:w-full group-hover:left-0" />
               </a>
             </li>
           ))
         }
       </ul>
     </div>
-    <a href="/" class="text-xl font-bold">Defuska.pl</a>
+    <a href="/" class="text-xl font-bold logo">Defuska.pl</a>
   </div>
 
   <div class="navbar-center hidden lg:flex">
@@ -65,18 +57,10 @@ const links = [
           <li>
             <a
               href={link.href}
-              class={
-                `relative group px-3 py-2 transition-colors ` +
-                `${currentPath === link.href ? "text-primary" : "text-base-content"}`
-              }
+              class="relative group px-3 py-2 transition-colors text-base-content"
             >
               {link.label}
-              <span
-                class={`absolute bottom-0 block h-[2px] bg-current
-                  transition-[width,left] duration-300 ease-in-out
-                  ${currentPath === link.href ? "w-full left-0" : "w-0 left-1/2"}
-                  ${currentPath !== link.href ? "group-hover:w-full group-hover:left-0" : ""}`}
-              />
+              <span class="absolute bottom-0 block h-[2px] bg-current w-0 left-1/2 transition-[width,left] duration-300 ease-in-out group-hover:w-full group-hover:left-0" />
             </a>
           </li>
         ))
@@ -85,8 +69,27 @@ const links = [
   </div>
 
   <div class="navbar-end">
-    <div class="pr-4 pt-1 btn">
+    <div class="pr-4 pt-1 btn hover:dark:bg-white/5">
       <ThemeToggle />
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll("nav a:not(.logo)");
+
+    links.forEach((link) => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("text-primary");
+
+        const span = link.querySelector("span");
+        if (span) {
+          span.classList.remove("w-0", "left-1/2");
+          span.classList.add("w-full", "left-0");
+        }
+      }
+    });
+  });
+</script>

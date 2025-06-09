@@ -1,13 +1,18 @@
 ---
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const { title } = Astro.props;
+const siteName = "Defuska.pl";
+const fullTitle = title ? `${siteName} | ${title}` : siteName;
 ---
 
 <html lang="pl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Defuska.pl</title>
+    <title>{fullTitle}</title>
     <script is:inline>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -25,10 +30,11 @@ import Nav from "../components/Nav.astro";
       })();
     </script>
   </head>
-  <body class="min-h-screen bg-base-100 text-base-content">
+  <body class="min-h-screen bg-base-100 text-base-content flex flex-col">
     <Nav />
-    <main class="max-w-4xl mx-auto">
+    <main class="max-w-4xl mx-auto flex-grow">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
