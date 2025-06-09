@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Regulaminy">
+  <section
+    class="mb-8 rounded-xl p-6 bg-base-200 flex flex-col mx-auto max-w-3xl"
+  >
+    <ul class="flex space-x-4 text-sm text-primary">
+      <li>
+        <a href="#uzytkowanie" class="hover:underline">Regulamin użytkowania</a>
+      </li>
+      <li>
+        <a href="#wsparcie" class="hover:underline">Regulamin wsparcia</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Regulamin użytkowania -->
+  <section
+    id="uzytkowanie"
+    class="mb-8 rounded-xl p-6 bg-base-200 flex flex-col mx-auto max-w-3xl"
+  >
+    <h1 class="text-3xl font-bold text-primary mb-4">
+      Regulamin użytkowania serwerów CS 1.6
+    </h1>
+    <h2 class="text-xl font-semibold mt-6 mb-2">1. Postanowienia ogólne</h2>
+    <p class="mb-4">
+      Niniejszy regulamin określa zasady korzystania z sieci serwerów
+      Counter-Strike 1.6 prowadzonej przez <strong>defuska.pl</strong>. Każdy
+      użytkownik zobowiązany jest do przestrzegania poniższych zasad.
+    </p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">2. Definicje</h2>
+    <ul class="list-disc list-inside mb-4">
+      <li>
+        <strong>Użytkownik</strong> – osoba łącząca się z serwerami CS 1.6.
+      </li>
+      <li>
+        <strong>Administrator</strong> – osoba zarządzająca serwerami i moderująca
+        rozgrywkę.
+      </li>
+      <li>
+        <strong>Cheat</strong> – wszelkie programy i modyfikacje ingerujące w mechanikę
+        gry.
+      </li>
+      <li>
+        <strong>VIP</strong> – wyróżnienie przyznawane darczyńcom, uprawniające do
+        przywilejów na serwerze.
+      </li>
+    </ul>
+    <h2 class="text-xl font-semibold mt-6 mb-2">3. Zasady korzystania</h2>
+    <ul class="list-disc list-inside mb-4">
+      <li>
+        Zakaz używania cheatów, exploitów i wszelkich nieautoryzowanych
+        modyfikacji.
+      </li>
+      <li>
+        Zakaz reklamowania innych serwerów, usług lub stron internetowych.
+      </li>
+      <li>Zakaz mowy nienawiści i obrażania innych uczestników rozgrywki.</li>
+      <li>
+        Zakaz zakłócania rozgrywki poprzez flood, spamming głosowy lub tekstowy.
+      </li>
+      <li>
+        Decyzje administratorów w sprawach moderacji, kar oraz interpretacji
+        regulaminu są ostateczne i należy je respektować.
+      </li>
+    </ul>
+    <h2 class="text-xl font-semibold mt-6 mb-2">4. Sankcje</h2>
+    <p class="mb-4">Naruszenie zasad może skutkować:</p>
+    <ul class="list-disc list-inside mb-4">
+      <li>Ostrzeżeniem (kick).</li>
+      <li>Tymczasowym lub stałym zablokowaniem dostępu (ban).</li>
+      <li>Usunięciem ze statystyk i rankingu.</li>
+    </ul>
+    <h2 class="text-xl font-semibold mt-6 mb-2">5. Logowanie i prywatność</h2>
+    <p class="mb-4">
+      Serwery defuska.pl rejestrują dane techniczne: adresy IP, nicki, SteamID
+      oraz logi czatu wyłącznie w celu zapewnienia bezpieczeństwa i analizy
+      nadużyć. Dane nie są udostępniane osobom trzecim poza wymaganiami
+      prawnymi. <br /> Dodatkowo, w przypadku korzystania z systemu rejestracji nicków,
+      przechowujemy dane logowania w postaci bezpiecznie zaszyfrowanych (hashowanych)
+      haseł. Dane te służą wyłącznie do umożliwienia logowania graczy do systemu
+      i nie są wykorzystywane w żadnym innym celu.
+    </p>
+    <p class="text-sm opacity-70">
+      Aktualne przepisy RODO oraz Ustawy o ochronie danych osobowych są
+      przestrzegane.
+    </p>
+  </section>
+
+  <!-- Regulamin wsparcia -->
+  <section
+    id="wsparcie"
+    class="mb-8 rounded-xl p-6 bg-base-200 flex flex-col mx-auto max-w-3xl"
+  >
+    <h1 class="text-3xl font-bold text-primary mb-4">
+      Regulamin wsparcia (darowizny)
+    </h1>
+    <h2 class="text-xl font-semibold mt-6 mb-2">1. Charakter darowizn</h2>
+    <p class="mb-4">
+      Wsparcie zespołu <strong>defuska.pl</strong> przyjmuje formę dobrowolnych darowizn.
+      Darowizny nie stanowią zakupu produktu ani usługi i mają charakter nieodpłatny.
+    </p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">2. Warunki wsparcia</h2>
+    <ul class="list-disc list-inside mb-4">
+      <li>Minimalna kwota darowizny: <strong>9,99 zł</strong>.</li>
+      <li>
+        Darowizny nie podlegają zwrotowi, z wyjątkiem sytuacji technicznych
+        opisanych w sekcji 4. Reklamacje i zwroty.
+      </li>
+    </ul>
+    <h2 class="text-xl font-semibold mt-6 mb-2">
+      3. Przyznawanie wyróżnienia VIP
+    </h2>
+    <p class="mb-4">
+      Za każdą darowiznę w wysokości co najmniej 9,99 zł darczyńca otrzymuje
+      rangę <strong>VIP</strong> na okres 30 dni. Aby uzyskać VIP, darczyńca przekazuje
+      alias (nick/SteamID), a wyróżnienie jest aktywowane automatycznie lub ręcznie,
+      możliwie jak najszybciej – zazwyczaj w ciągu kilku minut do maksymalnie 24
+      godzin.
+    </p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">4. Reklamacje i zwroty</h2>
+    <p class="mb-4">
+      Wszelkie wpłaty mają charakter darowizny i są co do zasady nieodwołalne. W
+      przypadku problemów z aktywacją rangi VIP, darczyńca może zgłosić
+      reklamację – zostanie ona rozpatrzona indywidualnie po kontakcie za
+      pośrednictwem Discorda lub adresu e-mail.
+    </p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">5. Ochrona danych</h2>
+    <p class="mb-4">
+      Serwer gromadzi techniczne dane graczy (IP, SteamID, nick, czat). Bramki
+      płatności przetwarzają dane darczyńców zgodnie ze swoimi regulaminami.
+      Zespół defuska.pl nie przechowuje adresów darczyńców.
+    </p>
+    <h2 class="text-xl font-semibold mt-6 mb-2">6. Postanowienia końcowe</h2>
+    <p class="mb-4">
+      Przekazanie darowizny oznacza akceptację niniejszego regulaminu. Zespół
+      defuska.pl zastrzega prawo do jego zmiany. Najnowsza wersja dostępna jest
+      na stronie defuska.pl/regulamin.
+    </p>
+    <p class="text-sm opacity-70">Obowiązuje od daty publikacji.</p>
+  </section>
+</Layout>

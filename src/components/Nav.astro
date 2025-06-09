@@ -1,0 +1,92 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: "/", label: "Strona główna" },
+  { href: "/vip", label: "Odbierz VIP-a" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/kontakt", label: "Kontakt" },
+  { href: "/regulamin", label: "Regulamin" },
+];
+---
+
+<nav class="navbar bg-base-100 shadow-sm px-10 mb-6">
+  <div class="navbar-start">
+    <div class="dropdown lg:hidden">
+      <label tabindex="0" class="btn btn-ghost btn-circle flex justify-start">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h7"></path>
+        </svg>
+      </label>
+      <ul
+        tabindex="0"
+        class="menu menu-compact dropdown-content mt-5 p-2 shadow-lg bg-base-100 rounded-box w-52"
+      >
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={
+                  `relative group px-3 py-2 transition-colors ` +
+                  `${currentPath === link.href ? "text-primary" : "text-base-content"}`
+                }
+              >
+                {link.label}
+                <span
+                  class={`absolute bottom-0 block h-[2px] bg-current
+                    transition-[width,left] duration-300 ease-in-out
+                    ${currentPath === link.href ? "w-full left-0" : "w-0 left-1/2"}
+                    ${currentPath !== link.href ? "group-hover:w-full group-hover:left-0" : ""}`}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <a href="/" class="text-xl font-bold">Defuska.pl</a>
+  </div>
+
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={
+                `relative group px-3 py-2 transition-colors ` +
+                `${currentPath === link.href ? "text-primary" : "text-base-content"}`
+              }
+            >
+              {link.label}
+              <span
+                class={`absolute bottom-0 block h-[2px] bg-current
+                  transition-[width,left] duration-300 ease-in-out
+                  ${currentPath === link.href ? "w-full left-0" : "w-0 left-1/2"}
+                  ${currentPath !== link.href ? "group-hover:w-full group-hover:left-0" : ""}`}
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="navbar-end">
+    <div class="pr-4 pt-1 btn">
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>
