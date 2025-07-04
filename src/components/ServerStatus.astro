@@ -8,9 +8,7 @@
     async function fetchStatus() {
       const container = document.getElementById("status-container");
       try {
-        const res = await fetch(
-          "http://51.38.134.243:5000/status/server-status"
-        );
+        const res = await fetch("https://api.defuska.pl/status/server-status");
         if (!res.ok) throw new Error("Błąd sieci");
         const data = await res.json();
         const servers = data.servers;
