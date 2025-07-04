@@ -1,0 +1,67 @@
+<section class="mt-8 w-full text-center">
+  <h2 class="text-2xl font-bold mb-4">Status serwerów CS 1.6</h2>
+  <div id="status-container" class="w-full flex justify-center">
+    <p>Ładowanie...</p>
+  </div>
+
+  <script is:inline>
+    async function fetchStatus() {
+      const container = document.getElementById("status-container");
+      try {
+        const res = await fetch(
+          "http://51.38.134.243:5000/status/server-status"
+        );
+        if (!res.ok) throw new Error("Błąd sieci");
+        const data = await res.json();
+        const servers = data.servers;
+
+        if (!servers || Object.keys(servers).length === 0) {
+          container.innerHTML = "<p>Brak danych o serwerach.</p>";
+          return;
+        }
+
+        const listItems = Object.entries(servers)
+          .map(([name, server]) => {
+            const displayName = server.display_name || name;
+
+            const playersInfo = server.online
+              ? `${server.players}/${server.max_players}`
+              : "";
+            const statusText = server.online
+              ? `<span class="text-green-500 font-bold">Online</span>`
+              : `<span class="text-red-500 font-bold">Offline</span>`;
+
+            const rightSide = server.online
+              ? `<span>${playersInfo} | ${statusText}</span>`
+              : `<span>${statusText}</span>`;
+
+            // Lewa kolumna: nazwa serwera
+            const leftSide = `<div class="font-semibold text-left truncate">${displayName}</div>`;
+
+            // Środek: IP
+            const centerSide = `<div class="flex-grow text-center text-secondary font-mono truncate">${server.ip}:${server.port}</div>`;
+
+            // Prawa kolumna: status
+            const rightSideStyled = `<div class="text-right font-semibold min-w-[120px]">${rightSide}</div>`;
+
+            return `<li class="flex items-center py-3 px-4 rounded bg-base-200 gap-4 w-full">
+              ${leftSide}
+              ${centerSide}
+              ${rightSideStyled}
+            </li>`;
+          })
+          .join("");
+
+        container.innerHTML = `
+          <ul class="space-y-2 w-full max-w-2xl mx-auto">
+            ${listItems}
+          </ul>`;
+      } catch (error) {
+        container.innerHTML = `<p class="text-red-500">Nie udało się pobrać statusów serwerów.</p>`;
+      }
+    }
+
+    fetchStatus();
+    setInterval(fetchStatus, 30000);
+  </script>
+</section>
