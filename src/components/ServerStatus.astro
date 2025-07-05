@@ -33,25 +33,27 @@
               ? `<span>${playersInfo} | ${statusText}</span>`
               : `<span>${statusText}</span>`;
 
-            // Lewa kolumna: nazwa serwera
-            const leftSide = `<div class="font-semibold text-left truncate">${displayName}</div>`;
-
-            // Środek: IP
-            const centerSide = `<div class="flex-grow text-center text-secondary font-mono truncate">${server.ip}:${server.port}</div>`;
-
-            // Prawa kolumna: status
-            const rightSideStyled = `<div class="text-right font-semibold min-w-[120px]">${rightSide}</div>`;
-
-            return `<li class="flex items-center py-3 px-4 rounded bg-base-200 gap-4 w-full">
-              ${leftSide}
-              ${centerSide}
-              ${rightSideStyled}
+            return `<li class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 py-3 px-4 rounded bg-base-200 w-full items-center">
+              <!-- Nazwa serwera - lewa kolumna na desktop, góra na mobile -->
+              <div class="font-semibold text-center md:text-left truncate order-1 md:order-1">
+                ${displayName}
+              </div>
+              
+              <!-- IP - zawsze na środku -->
+              <div class="text-center text-secondary font-mono truncate order-2 md:order-2">
+                ${server.ip}:${server.port}
+              </div>
+              
+              <!-- Status - prawa kolumna na desktop, dół na mobile -->
+              <div class="text-center md:text-right font-semibold min-w-[120px] order-3 md:order-3">
+                ${rightSide}
+              </div>
             </li>`;
           })
           .join("");
 
         container.innerHTML = `
-          <ul class="space-y-2 w-full max-w-2xl mx-auto">
+          <ul class="space-y-2 w-full max-w-4xl mx-auto px-4">
             ${listItems}
           </ul>`;
       } catch (error) {
